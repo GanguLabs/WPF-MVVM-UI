@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_MVVM_UI.View"
+        xmlns:viewmodel ="clr-namespace:WPF_MVVM_UI.ViewModels"
         mc:Ignorable="d"
         Title="LoginView" Height="550" Width="800"
         WindowStyle="None"
@@ -12,6 +13,19 @@
         Background="Transparent"
         AllowsTransparency="True"
         MouseDown="Window_MouseDown">
+
+    <Window.DataContext>
+        <viewmodel:LoginViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanTovisiblity" />
+    </Window.Resources>
+    
+    <Window.Visibility>
+        <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BooleanTovisiblity}" />
+    </Window.Visibility>
+    
     <Border CornerRadius="12">
         <Border.Background>
             <ImageBrush ImageSource="/Images/back-image.jpg"
@@ -149,6 +163,7 @@
                                FontFamily="Montserrat"
                                Margin="0 35 0 0" />
                     <TextBox x:Name="txtUser"
+                             Text="{Binding Username}"
                              FontSize="13"
                              FontWeight="Medium"
                              FontFamily="Montserrat"
