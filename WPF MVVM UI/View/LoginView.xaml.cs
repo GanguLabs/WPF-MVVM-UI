@@ -39,5 +39,10 @@ namespace WPF_MVVM_UI.View
         {
             Application.Current.Shutdown();
         }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
